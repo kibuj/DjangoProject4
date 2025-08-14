@@ -1,0 +1,13 @@
+
+
+{%block body%}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+{%endblock%}
+
+
+<p><a href="{%url 'register'%}">You doesn't'have account? Sign Up</a></p>
+<p><a href="{% url 'reset_password' %}">Forgot password?</a></p>
