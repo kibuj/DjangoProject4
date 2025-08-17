@@ -6,10 +6,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from .forms import LoginForm, RegisterForm, UserEditForm, ProfileEditForm
 from .models import Profile
+from posts.models import Post
+
 
 @login_required
 def index(request):
-    return render(request, 'users/index.html')
+    current_user = request.user
+    posts = Post.objects.filter(user=current_user)
+
+    return render(request, 'users/index.html' , {'posts':posts})
 
 def register(request):
     if request.method == 'POST':

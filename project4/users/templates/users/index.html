@@ -2,6 +2,11 @@
 
 {% block body %}
 
-Hello World
-
+<h1>Welcome {{name}}</h1>
+{% for post in posts %}
+    <h1>{{post.title}}</h1>
+    <h2>{{post.user}}</h2>
+    <img src="{{post.image.url}}">
+    <a href="{% url 'post_edit' post.slug %}">Редагувати</a>
+{% endfor %}
 {% endblock %}
